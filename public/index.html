@@ -43,47 +43,17 @@
   <body>
 
     <div id="floating-panel">
+      Subir Imagen<br/>
       <input id="file-input" type="file" />
     </div>
 
     <div id="map"></div>
 
-            <script>
-            document.getElementById("file-input").onchange = function(e) {
-                EXIF.getData(e.target.files[0], function() {
-                    var latitude = EXIF.getTag(this, "GPSLatitude"),
-                        longitude = EXIF.getTag(this, "GPSLongitude");
-                    alert("Latitud: " + (latitude[0] + (latitude[1]/60) + (latitude[2]/3600)) + "\nLongitud: " + (longitude[0] + (longitude[1]/60) + (longitude[2]/3600)));
-                });
 
 
-            }
-        </script>
-
-    <script>
-      var map, heatmap;
-
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
-          center: {lat: 19.371413, lng: -99.263024},
-          mapTypeId: 'roadmap'
-        });
-
-        heatmap = new google.maps.visualization.HeatmapLayer({
-          data: getPoints(),
-          map: map
-        });
-      }
-
-      function getPoints() {
-        return [
-          {location: new google.maps.LatLng(19.371231, -99.260835), weight: 3}
-        ];
-      }
-    </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtIcZbt0t_RYGc9y2R_zdIJJkgIxcN240&libraries=visualization&callback=initMap"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtIcZbt0t_RYGc9y2R_zdIJJkgIxcN240&libraries=visualization"></script>
+    <script src="../app.js"></script>
     <script type="text/javascript" src="exif.js"></script>
   </body>
 </html>
