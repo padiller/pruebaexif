@@ -8,13 +8,22 @@
         <br/><br/><br/>
         <input id="file-input" type="file" />
 
+        <div id="mapholder"></div>
+
         <script>
             document.getElementById("file-input").onchange = function(e) {
                 EXIF.getData(e.target.files[0], function() {
                     var latitude = EXIF.getTag(this, "GPSLatitude"),
                         longitude = EXIF.getTag(this, "GPSLongitude");
-                    alert("Latitud: " + (latitude[0] + (latitude[1]/60) + (latitude[2]/3600)) + "\nLongitud: " + longitude);
+                    alert("Latitud: " + (latitude[0] + (latitude[1]/60) + (latitude[2]/3600)) + "\nLongitud: " + (longitude[0] + (longitude[1]/60) + (longitude[2]/3600)));
+
+                                    var latlon = latitude + "," + longitude;
+                        var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
+                +latlon+"&zoom=14&size=400x300&sensor=false&key=AIzaSyBNnhqJns27SdFFwJ6xvtBZvy0P7_Sjazc";
+                document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
                 });
+
+
             }
         </script>
 
