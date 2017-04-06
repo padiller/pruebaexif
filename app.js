@@ -30,9 +30,3 @@ app.listen(appEnv.port, '0.0.0.0', function() {
   // print a message when the server starts listening
   console.log("server starting on " + appEnv.url);
 });
-
-var watson = require('watson-developer-cloud');
-var visual_recognition = watson.visual_recognition({
-  api_key: '3735956cf7c2cb2d6dad568e98a3388c845a3adf',
-  version_date: '2016-05-20'
-});
