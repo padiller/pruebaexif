@@ -13,7 +13,7 @@
                 EXIF.getData(e.target.files[0], function() {
                     var latitude = EXIF.getTag(this, "GPSLatitude"),
                         longitude = EXIF.getTag(this, "GPSLongitude");
-                    alert("Latitud: " + latitude + "\nLongitud: " + longitude);
+                    alert("Latitud: " + latitude[2] + "\nLongitud: " + longitude);
                 });
             }
         </script>
