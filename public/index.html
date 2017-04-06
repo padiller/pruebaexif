@@ -11,13 +11,11 @@
         <script>
             document.getElementById("file-input").onchange = function(e) {
                 EXIF.getData(e.target.files[0], function() {
-                    var make = EXIF.getTag(this, "GPSLatitude"),
-                        model = EXIF.getTag(this, "GPSLongitude");
-                    alert("I was taken by a " + make + " " + model);
+                    var latitude = EXIF.getTag(this, "GPSLatitude"),
+                        longitude = EXIF.getTag(this, "GPSLongitude");
+                    alert("Latitud: " + latitude + "\nLongitud: " + longitude);
                 });
             }
-
-
         </script>
 
     </body>
