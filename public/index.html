@@ -58,7 +58,7 @@
            latitude = EXIF.getTag(this, "GPSLatitude");
             longitude = EXIF.getTag(this, "GPSLongitude");
             latitude = (latitude[0] + (latitude[1]/60) + (latitude[2]/3600));
-            longitude = (longitude[0] + (longitude[1]/60) + (longitude[2]/3600));
+            longitude = (longitude[0] + (longitude[1]/60) + (longitude[2]/3600)) * (-1);
           alert("Latitud: " + latitude + "\nLongitud: " + longitude);
           heatmap = new google.maps.visualization.HeatmapLayer({
           data: [
