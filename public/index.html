@@ -50,17 +50,16 @@
     <div id="map"></div>
 
     <script>
-      var map, heatmap;
-      var latitude, longitude;
-
+    var map, heatmap;
+    var latitude, longitude;
       document.getElementById("file-input").onchange = function(e) {
         EXIF.getData(e.target.files[0], function() {
-          latitude = EXIF.getTag(this, "GPSLatitude");
-          latitude = (latitude[0] + (latitude[1]/60) + (latitude[2]/3600));
-          longitude = EXIF.getTag(this, "GPSLongitude");
-          longitude = (longitude[0] + (longitude[1]/60) + (longitude[2]/3600));
+           latitude = EXIF.getTag(this, "GPSLatitude");
+            longitude = EXIF.getTag(this, "GPSLongitude");
+            latitude = (latitude[0] + (latitude[1]/60) + (latitude[2]/3600));
+            longitude = (longitude[0] + (longitude[1]/60) + (longitude[2]/3600));
+          alert("Latitud: " + latitude + "\nLongitud: " + longitude);
         });
-        initMap();
       }
 
       function initMap() {
@@ -73,14 +72,13 @@
         heatmap = new google.maps.visualization.HeatmapLayer({
           data: [
           {location: new google.maps.LatLng(latitude, longitude), weight: 3}
-        ];,
+        ],
           map: map
         });
       }
     </script>
     
-
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtIcZbt0t_RYGc9y2R_zdIJJkgIxcN240&libraries=visualization"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtIcZbt0t_RYGc9y2R_zdIJJkgIxcN240&libraries=visualization&callback=initMap"></script>
     <script type="text/javascript" src="exif.js"></script>
   </body>
 </html>
